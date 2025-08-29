@@ -1,0 +1,201 @@
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-nowrap {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.grid-1 {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.padding-xs {
+  padding: 4px;
+}
+
+.padding-s {
+  padding: 8px;
+}
+
+.padding-m {
+  padding: 16px;
+}
+
+.padding-l {
+  padding: 24px;
+}
+
+.padding-xl {
+  padding: 32px;
+}
+
+.margin-xs {
+  margin: 4px;
+}
+
+.margin-s {
+  margin: 8px;
+}
+
+.margin-m {
+  margin: 16px;
+}
+
+.margin-l {
+  margin: 24px;
+}
+
+.margin-xl {
+  margin: 32px;
+}
+
+.font-s {
+  font-size: 8px;
+}
+
+.font-m {
+  font-size: 12px;
+}
+
+.font-l {
+  font-size: 16px;
+}
+
+.font-xl {
+  font-size: 20px;
+}
+
+.font-xxl {
+  font-size: 24px;
+}
+
+.font-big {
+  font-size: 32px;
+}
+
+.font-bigger {
+  font-size: 36px;
+}
+
+.font-300 {
+  font-weight: 300;
+}
+
+.font-400 {
+  font-weight: 400;
+}
+
+.flex-500 {
+  flex: 500;
+}
+
+.font-600 {
+  font-weight: 600;
+}
+
+.font-700 {
+  font-weight: 700;
+}
+
+.font-800 {
+  font-weight: 800;
+}
+
+.border-none {
+  border: none;
+}
+
+.border-radius-xs {
+  border-radius: 4px;
+}
+
+.border-radius-s {
+  border-radius: 8px;
+}
+
+.border-radius-m {
+  border-radius: 16px;
+}
+
+.bg-blue {
+  background-color: rgb(37, 37, 182);
+}
+
+.bg-gray {
+  background-color: rgb(207, 205, 205);
+}
+
+.bg-transparent {
+  background-color: transparent;
+}
+
+.gap-xs {
+  gap: 4px;
+}
+.gap-s {
+  gap: 8px;
+}
+
+.gap-m {
+  gap: 12px;
+}
+
+.gap-l {
+  gap: 16px;
+}
+
+.gap-xl {
+  gap: 20px;
+}
+
+.text-white {
+  color: white;
+}
+
+.text-black {
+  color: black;
+}
+
+.main-header {
+  display: flex;
+  position: relative;
+  margin-bottom: 40px;
+}

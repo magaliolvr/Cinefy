@@ -2,6 +2,7 @@
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  margin: 0;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -24,10 +25,21 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background: #153547;
+  background: linear-gradient(180deg, rgba(21, 53, 71, 1) 58%, rgba(87, 199, 133, 1) 93%, rgba(237, 221, 83, 1) 100%);
+}
+
+main {
+  display: block;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 40px 32px;
+  max-width: 1200px;
 }
 
 h1 {
