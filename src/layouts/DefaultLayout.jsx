@@ -3,6 +3,7 @@ import NavHeader from "../components/NavHeader.jsx";
 import LogoCinefy from "../assets/cinefy.png";
 import "../style/reset.scss";
 import "../style/utils.scss";
+import { Link } from "react-router";
 
 function DefaultLayout() {
   return (
@@ -10,13 +11,19 @@ function DefaultLayout() {
       <NavHeader logo={LogoCinefy} width={100} height={""} alt="Cinefy Logo">
         <ul>
           <li>
-            <a href="/">Home</a>
+            <Link to={"./home"}>
+              <span>Home</span>
+            </Link>
           </li>
           <li>
-            <a href="/about">About</a>
+            <Link to={"./movies"}>
+              <span>Movies</span>
+            </Link>
           </li>
           <li>
-            <a href="/contact">Contact</a>
+            <Link to={"./tvshow"}>
+              <span>Tv Show</span>
+            </Link>
           </li>
         </ul>
       </NavHeader>

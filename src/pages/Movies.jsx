@@ -1,14 +1,15 @@
-import GlassCard from "../components/GlassCard";
 import MoviesList from "../components/MoviesList";
 
 function Movies() {
   return (
-    <div>
+    <>
+      {/* adicionar algum componente para titulo */}
       <h1>Movies</h1>
       <section className="flex-wrap">
+        {/* adionar algum componente para galeria */}
         <MoviesList />
       </section>
-    </div>
+    </>
   );
 }
 export default Movies;
