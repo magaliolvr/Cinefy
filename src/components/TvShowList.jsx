@@ -11,13 +11,17 @@ function TvShowList() {
 
   return (
     <>
-      {tvShow.map((serie) => {
-        return (
-          <Link key={serie.id}>
-            <ContentCard poster={`https://image.tmdb.org/t/p/w500${serie.poster_path}`} title={serie.title} date={serie.release_date} />
-          </Link>
-        );
-      })}
+      {Array.isArray(tvShow) ? (
+        tvShow.map((serie) => {
+          return (
+            <Link key={serie.id}>
+              <ContentCard poster={`https://image.tmdb.org/t/p/w500${serie.poster_path}`} title={serie.title} date={serie.release_date} />
+            </Link>
+          );
+        })
+      ) : (
+        <p>Nenhuma série encontrada.</p>
+      )}
     </>
   );
 }
