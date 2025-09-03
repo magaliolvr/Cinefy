@@ -1,5 +1,6 @@
 import { Outlet } from "react-router";
 import NavHeader from "../components/NavHeader.jsx";
+import Footer from "../components/Footer.jsx";
 import LogoCinefy from "../assets/cinefy.png";
 import "../style/reset.scss";
 import "../style/utils.scss";
@@ -11,7 +12,7 @@ function DefaultLayout() {
       <NavHeader logo={LogoCinefy} width={100} height={""} alt="Cinefy Logo">
         <ul>
           <li>
-            <Link to={"./home"}>
+            <Link to={"./"}>
               <span>Home</span>
             </Link>
           </li>
@@ -30,7 +31,9 @@ function DefaultLayout() {
       <main>
         <Outlet />
       </main>
-      <footer />
+      <footer>
+        <Footer />
+      </footer>
     </>
   );
 }

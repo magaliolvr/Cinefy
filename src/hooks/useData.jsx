@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-export function useData(type) {
+export const useData = (type) => {
   const [items, setItems] = useState(null);
   {
     /*  useState null permite que items se inicialize como null, podendo receber tipos de dados como por exemplo um array ou um objeto, ou número ou string. */
@@ -23,7 +23,7 @@ export function useData(type) {
       try {
         const data = await fetch(`https://api.themoviedb.org/3/${type}`, options);
         const newDataList = await data.json();
-        console.log("new" + `${type}` + "list", newDataList);
+        console.log("new " + `${type}` + " list", newDataList);
         setItems(newDataList.results || newDataList); // Se newDataList.results for undefined, usa newDataList
       } catch (error) {
         console.log("error", error);
@@ -35,4 +35,4 @@ export function useData(type) {
   }, [type]);
 
   return { items, isLoading };
-}
+};

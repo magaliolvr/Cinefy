@@ -9,6 +9,7 @@ import Home from "./pages/Home.jsx";
 import Movies from "./pages/Movies.jsx";
 import MovieDetail from "./pages/MovieDetail.jsx";
 import TvShow from "./pages/TvShow.jsx";
+import TvShowDetail from "./pages/TvShowDetail.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -18,7 +19,8 @@ createRoot(document.getElementById("root")).render(
           <Route path="/" element={<Home />} />
           <Route path="/movies" element={<Movies />} />
           <Route path="/tvshow" element={<TvShow />} />
-          <Route path="/moviedetail/:movieid" element={<MovieDetail />} />
+          <Route path="/moviedetail/:movieId" element={<MovieDetail />} />
+          <Route path="/tvshowdetail/:tvShowId" element={<TvShowDetail />} />
         </Route>
       </Routes>
     </BrowserRouter>
