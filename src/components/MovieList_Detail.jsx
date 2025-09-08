@@ -1,6 +1,4 @@
 import { useData } from "../hooks/useData";
-import ContentCard from "./ContentCard";
-import { Link } from "react-router";
 import { useParams } from "react-router";
 
 function MoviesListDetail() {
@@ -23,31 +21,44 @@ function MoviesListDetail() {
 
   return (
     <>
-      <img src={`https://image.tmdb.org/t/p/w500${movies.backdrop_path}`} alt={movies.title} />
-      <h2>{movies.title}</h2>
-      <p>{movies.overview}</p>
-      <br />
-      {/* elenco */}
-      <ul>
-        {movieCredits.cast.map((elenco) => (
-          <li key={elenco.cast_id}>
-            <img src={`https://image.tmdb.org/t/p/w500${elenco.profile_path}`} alt={`Image of ${elenco.original_name} that represents ${elenco.character}`} width={100} />
-            <span>
-              {elenco.original_name} as {elenco.character}
-            </span>
-          </li>
-        ))}
-      </ul>
-      {/* crew */}
-      <ul>
-        {movieCredits.crew.map((crew) => (
-          <li key={crew.credit_id}>
-            <span>{crew.name}</span>
-            <br />
-            <span>{crew.job}</span>
-          </li>
-        ))}
-      </ul>
+      <section>
+        <div className="flex flex-wrap gap-xxl">
+          <img className="flex1" src={`https://image.tmdb.org/t/p/w500${movies.backdrop_path}`} alt={movies.title} />
+          <div className="flex1">
+            <h2>{movies.title}</h2>
+            <p>{movies.overview}</p>
+          </div>
+        </div>
+
+        <h3>Cast</h3>
+        <div className="detail-list">
+          {/* Cast */}
+          <ul>
+            {movieCredits.cast.map((elenco) => (
+              <li key={elenco.cast_id}>
+                <img src={`https://image.tmdb.org/t/p/w500${elenco.profile_path}`} alt={`Image of ${elenco.original_name} that represents ${elenco.character}`} width={100} />
+                <span>
+                  {elenco.original_name} as {elenco.character}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <h3>Crew</h3>
+        <div className="detail-list">
+          {/* Crew */}
+          <ul>
+            {movieCredits.crew.map((equipe) => (
+              <li key={equipe.id}>
+                <span>{equipe.name}</span>
+                <br />
+                <span>{equipe.job}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
     </>
   );
 }

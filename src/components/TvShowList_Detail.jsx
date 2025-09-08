@@ -1,7 +1,6 @@
 import { useData } from "../hooks/useData";
-import ContentCard from "./ContentCard";
-import { Link } from "react-router";
 import { useParams } from "react-router";
+import "../style/utils.scss";
 
 function TvShowList_Detail() {
   const { tvShowId } = useParams();
@@ -25,32 +24,45 @@ function TvShowList_Detail() {
 
   return (
     <>
-      <img src={`https://image.tmdb.org/t/p/w500${tvShow.backdrop_path}`} alt={tvShow.title} />
-      <h1>{tvShow.name}</h1>
-      <p>{tvShow.overview}</p>
-      <br />
-      {/* <elenco /> */}
-      <ul>
-        {/* tvShowCredits é um objeto que possui a propriedade 'cast', que é um array de atores. Por isso uso tvShowCrew.cast.map para percorrer o elenco. */}
-        {tvShowCredits.cast.map((elenco) => (
-          <li key={elenco.id}>
-            <img src={`https://image.tmdb.org/t/p/w500${elenco.profile_path}`} alt={`Image of ${elenco.original_name} that represents ${elenco.character}`} width="100" />
-            <span>
-              {elenco.original_name} as {elenco.character}
-            </span>
-          </li>
-        ))}
-      </ul>
-      {/* equipe */}
-      <ul>
-        {tvShowCredits.crew.map((crew) => (
-          <li key={crew.id}>
-            <span>{crew.name}</span>
-            <br />
-            <span>{crew.job}</span>
-          </li>
-        ))}
-      </ul>
+      <section>
+        <div className="flex flex-wrap gap-xxl">
+          <img className="flex1" src={`https://image.tmdb.org/t/p/w500${tvShow.backdrop_path}`} alt={tvShow.title} />
+          <div className="flex1">
+            <h1>{tvShow.name}</h1>
+            <p>{tvShow.overview}</p>
+          </div>
+        </div>
+
+        {/* elenco */}
+        <h2>Cast</h2>
+        <div className="detail-list">
+          <ul>
+            {/* tvShowCredits é um objeto que possui a propriedade 'cast', que é um array de atores. Por isso uso tvShowCrew.cast.map para percorrer o elenco. */}
+            {tvShowCredits.cast.map((elenco) => (
+              <li key={elenco.id}>
+                <img src={`https://image.tmdb.org/t/p/w500${elenco.profile_path}`} alt={`Image of ${elenco.original_name} that represents ${elenco.character}`} width="100" />
+                <span>
+                  {elenco.original_name} as {elenco.character}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* equipe */}
+        <h2>Crew</h2>
+        <div className="detail-list">
+          <ul>
+            {tvShowCredits.crew.map((crew) => (
+              <li key={crew.crew_id}>
+                <span>{crew.name}</span>
+                <br />
+                <span>{crew.job}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
     </>
   );
 }

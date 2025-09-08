@@ -1,3 +1,11 @@
+.flex {
+  display: flex;
+}
+
+.flex1 {
+  flex: 1;
+}
+
 .flex-column {
   display: flex;
   flex-direction: column;
@@ -184,6 +192,10 @@
 
 .gap-xl {
   gap: 20px;
+}
+
+.gap-xxl {
+  gap: 32px;
 }
 
 .text-white {
