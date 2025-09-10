@@ -2,6 +2,7 @@ import React from "react";
 import "./NavHeaderStyle.scss";
 import "../style/reset.scss";
 import "../style/utils.scss";
+import ThemeToggleButton from "./ThemeToggleButton.jsx";
 
 function NavHeader({ logo, width, height, alt, children }) {
   return (
@@ -9,6 +10,7 @@ function NavHeader({ logo, width, height, alt, children }) {
       <header className="nav-header">
         <img src={logo} alt={alt} width={width} height={height} className="navbar_logo" />
         <nav>{children}</nav>
+        <ThemeToggleButton />
       </header>
     </>
   );
