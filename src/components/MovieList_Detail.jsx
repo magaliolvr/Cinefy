@@ -4,62 +4,70 @@ import { useParams } from "react-router";
 function MoviesListDetail() {
   const { movieId } = useParams();
 
-  const { items: movies, isLoading } = useData(`movie/${movieId}`);
-  console.log("passei por aqui, Movie list detail. Movie id, movies e isloading :", movieId, movies, isLoading);
+  const { items: movie, isLoading: loadingMovie} = useData(`movie/${movieId}`);
+  const { items: credits, isLoading: loadingCredits } = useData(`movie/${movieId}/credits`);
 
-  // elenco
-  const { items: movieCredits } = useData(`movie/${movieId}/credits`);
-  console.log("passei por aqui, Movie list details ELENCO :", movieCredits);
+  if (loadingMovie || loadingCredits) return <p>Carregando filmes...</p>; //se loadingMovie for true ou loadingCredits for true, retorna a mensagem de carregando filmes.
+  if (!movie || !credits) return <p>Nenhum detalhe encontrado.</p>; //se movie for null ou undefined, ou credits for null ou undefined, retorna a mensagem de nenhum detalhe encontrado.
 
-  if (isLoading) {
-    return <p>Carregando filmes...</p>;
-  }
-
-  if (!movies) {
-    return <p>Nenhum detalhe encontrado.</p>;
-  }
+  // --- Agrupar crew por pessoa ---
+  const groupedCrew = {};
+  credits.crew.forEach(member => {
+    const name = member.name;
+    if (!groupedCrew[name]) {
+      groupedCrew[name] = { department: member.department, jobs: [member.job] };
+    } else {
+      if (!groupedCrew[name].jobs.includes(member.job)) groupedCrew[name].jobs.push(member.job);
+    }
+  });
+  // para cada membro da equipe (crew), verifica se o nome já existe no objeto groupedCrew. Se não existir, cria uma nova entrada com o departamento e um array contendo o trabalho atual. Se já existir, verifica se o trabalho atual já está no array de trabalhos; se não estiver, adiciona-o.
 
   return (
-    <>
-      <section>
-        <div className="flex flex-wrap gap-xxl">
-          <img className="flex1" src={`https://image.tmdb.org/t/p/w500${movies.backdrop_path}`} alt={movies.title} />
-          <div className="flex1">
-            <h2>{movies.title}</h2>
-            <p>{movies.overview}</p>
-          </div>
+    <section>
+      {/* Filme */}
+      <div className="flex flex-wrap gap-xxl">
+        <img
+          className="flex1"
+          src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+          alt={movie.title}
+        />
+        <div className="flex1">
+          <h2>{movie.title}</h2>
+          <p>{movie.overview}</p>
         </div>
+      </div>
 
-        <h3>Cast</h3>
-        <div className="detail-list">
-          {/* Cast */}
-          <ul>
-            {movieCredits.cast.map((elenco) => (
-              <li key={elenco.cast_id}>
-                <img src={`https://image.tmdb.org/t/p/w500${elenco.profile_path}`} alt={`Image of ${elenco.original_name} that represents ${elenco.character}`} width={100} />
-                <span>
-                  {elenco.original_name} as {elenco.character}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
+      {/* Cast */}
+      <h3>Cast</h3>
+      <div className="detail-list">
+        <ul>
+          {credits.cast.map(elenco => (
+            <li key={elenco.cast_id}>
+              <img
+                src={`https://image.tmdb.org/t/p/w500${elenco.profile_path}`}
+                alt={`${elenco.original_name} as ${elenco.character}`}
+                width={100}
+              />
+              <span>{elenco.original_name} as {elenco.character}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
 
-        <h3>Crew</h3>
-        <div className="detail-list">
-          {/* Crew */}
-          <ul>
-            {movieCredits.crew.map((equipe) => (
-              <li key={equipe.id}>
-                <span>{equipe.name}</span>
-                <br />
-                <span>{equipe.job}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-    </>
+      {/* Crew */}
+      <h3>Crew</h3>
+      <div className="detail-list">
+        <ul>
+          {Object.entries(groupedCrew).map(([name, info]) => (
+            <li key={name}>
+              <span>{name}</span>
+              <br />
+              <span>{info.department}: {info.jobs.join(", ")}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
   );
 }
 
