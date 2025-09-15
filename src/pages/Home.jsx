@@ -1,6 +1,6 @@
 import { Parallax, Autoplay, Pagination, Navigation, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import React, { useRef, useParams, useState } from "react";
+// import React, { useRef } from "react";
 import { useData } from "../hooks/useData";
 import { Link } from "react-router";
 import "./Home.scss";
@@ -8,18 +8,23 @@ import "swiper/css"; //sempre necessario ao usar swiper
 
 function Home() {
   const { items: inExibition, isLoading } = useData("movie/upcoming");
+
+  if (isLoading) {
+    return <p>Carregando...</p>;
+  }
+
   // Swiper autoplay
-  const progressCircle = useRef(null);
-  const progressContent = useRef(null);
-  const onAutoplayTimeLeft = (s, time, progress) => {
-    if (progressCircle.current) {
-      progressCircle.current.style.setProperty("--progress", 1 - progress);
-    }
-    if (progressContent.current) {
-      progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
-    }
-    // Não é necessário retornar JSX aqui
-  };
+  // const progressCircle = useRef(null);
+  // const progressContent = useRef(null);
+  // const onAutoplayTimeLeft = (s, time, progress) => {
+  //   if (progressCircle.current) {
+  //     progressCircle.current.style.setProperty("--progress", 1 - progress);
+  //   }
+  //   if (progressContent.current) {
+  //     progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
+  //   }
+  //   // Não é necessário retornar JSX aqui
+  // };
 
   return (
     <>
@@ -34,10 +39,10 @@ function Home() {
           navigation
           parallax={true}
           pagination={{ clickable: true }}
-          // autoplay={{
-          //   delay: 2500,
-          //   disableOnInteraction: false,
-          // }} // autoplay : https://codesandbox.io/p/sandbox/nhtzd5?file=%2Fsrc%2FApp.jsx%3A21%2C9-24%2C11
+          autoplay={{
+            delay: 6000,
+            disableOnInteraction: false,
+          }} // autoplay : https://codesandbox.io/p/sandbox/nhtzd5?file=%2Fsrc%2FApp.jsx%3A21%2C9-24%2C11
           spaceBetween={50}
           breakpoints={{
             600: { slidesPerView: 1 },
