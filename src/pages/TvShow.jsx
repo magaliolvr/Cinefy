@@ -4,7 +4,7 @@ function TvShow() {
   return (
     <>
       <h1>Tv Show</h1>
-      <section className="flex-wrap">
+      <section className="flex-wrap justify-center">
         <TvShowList />
       </section>
     </>

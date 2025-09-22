@@ -9,7 +9,9 @@ function NavHeader({ logo, width, height, alt, children }) {
     <>
       <header className="nav-header">
         <img src={logo} alt={alt} width={width} height={height} className="navbar_logo" />
-        <nav>{children}</nav>
+        <nav>
+          {children}
+        </nav>
         <ThemeToggleButton />
       </header>
     </>

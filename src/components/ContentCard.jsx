@@ -1,7 +1,7 @@
 import GlassCard from "./GlassCard";
 import React from "react";
 
-function ContentCard({ poster, title, year }) {
+function ContentCard({ poster, title, year, rating }) {
   console.log("qual titulo e ano: ", title, year);
   return (
     <GlassCard>
@@ -9,6 +9,7 @@ function ContentCard({ poster, title, year }) {
         <img src={poster} alt={title} />
         <h1>{title}</h1>
         <div>{year}</div>
+        <div>{rating}</div>
       </div>
     </GlassCard>
   );

@@ -5,8 +5,13 @@ import LogoCinefy from "../assets/cinefy.png";
 import "../style/reset.scss";
 import "../style/utils.scss";
 import { Link } from "react-router";
+import Search from "../components/Search.jsx";
+import { useState } from "react";
+
 
 function DefaultLayout() {
+  const [searchValue, setSearchValue] = useState("");
+
   return (
     <>
       <NavHeader logo={LogoCinefy} width={100} height={""} alt="Cinefy Logo">
@@ -26,10 +31,13 @@ function DefaultLayout() {
               <span>Tv Show</span>
             </Link>
           </li>
+          <li>
+            <Search value={searchValue} onChange={setSearchValue} />
+          </li>
         </ul>
       </NavHeader>
       <main>
-        <Outlet />
+        <Outlet context={{ searchValue }} />
       </main>
       <footer>
         <Footer />

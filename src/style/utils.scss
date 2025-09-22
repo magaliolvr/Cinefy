@@ -2,6 +2,10 @@
   display: flex;
 }
 
+.grid {
+  display: grid;
+}
+
 .flex1 {
   flex: 1;
 }
@@ -33,6 +37,10 @@
 
 .justify-start {
   justify-content: flex-start;
+}
+
+.justify-center {
+  justify-content: center;
 }
 
 .justify-end {
@@ -178,6 +186,7 @@
 .gap-xs {
   gap: 4px;
 }
+
 .gap-s {
   gap: 8px;
 }
@@ -204,10 +213,4 @@
 
 .text-black {
   color: black;
-}
-
-.main-header {
-  display: flex;
-  position: relative;
-  margin-bottom: 40px;
 }

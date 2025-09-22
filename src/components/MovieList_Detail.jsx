@@ -1,10 +1,20 @@
+import { SwiperSlide } from "swiper/react";
 import { useData } from "../hooks/useData";
 import { useParams } from "react-router";
+import { Navigation, Pagination, Mousewheel } from "swiper/modules";
+import { Swiper } from "swiper/react";
+import StarRating from "./StarRating";
+
+
+// estilos obrigatórios do Swiper
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 function MoviesListDetail() {
   const { movieId } = useParams();
 
-  const { items: movie, isLoading: loadingMovie} = useData(`movie/${movieId}`);
+  const { items: movie, isLoading: loadingMovie } = useData(`movie/${movieId}`);
   const { items: credits, isLoading: loadingCredits } = useData(`movie/${movieId}/credits`);
 
   if (loadingMovie || loadingCredits) return <p>Carregando filmes...</p>; //se loadingMovie for true ou loadingCredits for true, retorna a mensagem de carregando filmes.
@@ -30,10 +40,17 @@ function MoviesListDetail() {
           className="flex1"
           src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
           alt={movie.title}
+
         />
         <div className="flex1">
           <h2>{movie.title}</h2>
           <p>{movie.overview}</p>
+          <p><strong>Genre:</strong> {movie.genres.map((genre) => genre.name).join(", ")}</p>
+          <StarRating rating={movie.vote_average} />
+          <div className="flex-column gap-s">
+            <strong>Release Date:</strong> {movie.release_date}
+            <strong>Runtime:</strong> {movie.runtime} minutes
+          </div>
         </div>
       </div>
 
@@ -41,16 +58,34 @@ function MoviesListDetail() {
       <h3>Cast</h3>
       <div className="detail-list">
         <ul>
-          {credits.cast.map(elenco => (
-            <li key={elenco.cast_id}>
-              <img
-                src={`https://image.tmdb.org/t/p/w500${elenco.profile_path}`}
-                alt={`${elenco.original_name} as ${elenco.character}`}
-                width={100}
-              />
-              <span>{elenco.original_name} as {elenco.character}</span>
-            </li>
-          ))}
+          <Swiper style={{
+            "--swiper-navigation-color": "#fff",
+            "--swiper-pagination-color": "#fff",
+          }}
+            modules={[Pagination, Navigation, Mousewheel]}
+            grabCursor={true}
+            mousewheel={{ forceToAxis: true }} // faz movimento scroll horizontal
+            spaceBetween={50}
+            slidesPerView="auto"
+            className="mySwiper" >
+
+            {credits.cast.map(elenco => {
+              return (
+                <SwiperSlide key={elenco.cast_id} style={{ width: "auto" }}>
+                  <li className="grid">
+                    <img
+                      src={`https://image.tmdb.org/t/p/w500${elenco.profile_path}`}
+                      alt={`${elenco.original_name} as ${elenco.character}`}
+                      width={100}
+                    />
+                    <span>{elenco.original_name}</span>
+                    <span> as </span>
+                    <span>{elenco.character}</span>
+                  </li>
+                </SwiperSlide>
+              )
+            })}
+          </Swiper>
         </ul>
       </div>
 
@@ -58,13 +93,28 @@ function MoviesListDetail() {
       <h3>Crew</h3>
       <div className="detail-list">
         <ul>
-          {Object.entries(groupedCrew).map(([name, info]) => (
-            <li key={name}>
-              <span>{name}</span>
-              <br />
-              <span>{info.department}: {info.jobs.join(", ")}</span>
-            </li>
-          ))}
+          <Swiper style={{
+            "--swiper-navigation-color": "#fff",
+            "--swiper-pagination-color": "#fff",
+          }}
+            modules={[Pagination, Navigation, Mousewheel]}
+            grabCursor={true}
+            mousewheel={{ forceToAxis: true }} // faz movimento scroll horizontal
+            spaceBetween={50}
+            slidesPerView="auto"
+            className="mySwiper" >
+            {Object.entries(groupedCrew).map(([name, info]) => {
+              return (
+                <SwiperSlide key={name} style={{ width: "auto" }}>
+                  <li className="grid">
+                    <span>{name}</span>
+                    <br />
+                    <span>{info.department}: {info.jobs.join(", ")}</span>
+                  </li>
+                </SwiperSlide>
+              )
+            })}
+          </Swiper>
         </ul>
       </div>
     </section>

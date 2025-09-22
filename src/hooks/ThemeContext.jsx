@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { ThemeProvider as StyledThemeProvider } from "styled-components";
 import GlobalStyle from "../styles.jsx";
 import { light, dark } from "../theme.jsx";
@@ -7,8 +7,16 @@ const ThemeContext = createContext(); ///Cria o contexto. O valor padrão é opc
 
 export function ThemeProvider({ children }) {
   // Cria o provedor de tema. Ele gerencia o estado do tema e fornece funções para alternar temas.
-  const [themeName, setThemeName] = useState("light"); // Estado para armazenar o nome do tema atual.
+  const [themeName, setThemeName] = useState(() => {
+    return localStorage.getItem("theme") || "light"; // quando nao houver um tema definido, usa tema claro como padrao
+  });
   const theme = themeName === "light" ? light : dark; // A condição diz que se o nome do tema for "light", use o tema claro; caso contrário, use o tema escuro.
+
+
+  useEffect(() => {
+    localStorage.setItem("theme", themeName);
+  }, [themeName]); //sempre que o tema for alterado, salva na local storage
+
 
   // Função para alternar entre temas claro e escuro.
 
