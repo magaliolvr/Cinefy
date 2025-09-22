@@ -5,7 +5,7 @@ function Movies() {
     <>
       {/* adicionar algum componente para titulo */}
       <h1>Movies</h1>
-      <section className="flex-wrap">
+      <section className="flex-wrap justify-center">
         {/* adionar algum componente para galeria */}
         <MoviesList />
       </section>

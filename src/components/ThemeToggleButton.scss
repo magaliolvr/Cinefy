@@ -1,0 +1,41 @@
+/* switch.scss */
+
+
+
+.switch {
+    position: relative;
+    display: inline-block;
+
+    /* deixa o input cobrindo a área do switch para garantir clique */
+    input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        opacity: 0;
+        cursor: pointer;
+        z-index: 2;
+    }
+
+
+    input:checked {
+
+        .thumb {
+            transform: translateX(36px);
+
+            .icon {
+                color: #fff; // a lua fica branca
+            }
+        }
+    }
+
+    input:focus {
+        box-shadow: 0 0 1px #000000;
+    }
+
+    input:checked:before {
+        transform: translateX(26px);
+    }
+}

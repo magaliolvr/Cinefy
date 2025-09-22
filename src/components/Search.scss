@@ -1,0 +1,30 @@
+.search-wrap {
+    .input-search {
+        background: #ffffff;
+        border-radius: 25px;
+        border: solid 1px #c4bfbf;
+        color: #000;
+        padding: 4px 8px;
+    }
+
+    .button-clear {
+        background: transparent;
+        padding: 8px;
+        color: #8f8c8c;
+        position: relative;
+        right: 35px;
+        top: 3px;
+
+        &:hover {
+            border-color: transparent;
+            border-radius: 0;
+        }
+
+        &:focus-visible,
+        &:focus {
+            border: transparent;
+            outline: transparent;
+        }
+    }
+
+}

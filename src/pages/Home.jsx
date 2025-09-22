@@ -13,19 +13,6 @@ function Home() {
     return <p>Carregando...</p>;
   }
 
-  // Swiper autoplay
-  // const progressCircle = useRef(null);
-  // const progressContent = useRef(null);
-  // const onAutoplayTimeLeft = (s, time, progress) => {
-  //   if (progressCircle.current) {
-  //     progressCircle.current.style.setProperty("--progress", 1 - progress);
-  //   }
-  //   if (progressContent.current) {
-  //     progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
-  //   }
-  //   // Não é necessário retornar JSX aqui
-  // };
-
   return (
     <>
       <h1>Estréias</h1>
@@ -39,10 +26,10 @@ function Home() {
           navigation
           parallax={true}
           pagination={{ clickable: true }}
-          autoplay={{
-            delay: 6000,
-            disableOnInteraction: false,
-          }} // autoplay : https://codesandbox.io/p/sandbox/nhtzd5?file=%2Fsrc%2FApp.jsx%3A21%2C9-24%2C11
+          // autoplay={{
+          //   delay: 6000,
+          //   disableOnInteraction: false,
+          // }} // autoplay : https://codesandbox.io/p/sandbox/nhtzd5?file=%2Fsrc%2FApp.jsx%3A21%2C9-24%2C11
           spaceBetween={50}
           breakpoints={{
             600: { slidesPerView: 1 },
