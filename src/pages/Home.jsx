@@ -26,10 +26,10 @@ function Home() {
           navigation
           parallax={true}
           pagination={{ clickable: true }}
-          // autoplay={{
-          //   delay: 6000,
-          //   disableOnInteraction: false,
-          // }} // autoplay : https://codesandbox.io/p/sandbox/nhtzd5?file=%2Fsrc%2FApp.jsx%3A21%2C9-24%2C11
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }} // autoplay : https://codesandbox.io/p/sandbox/nhtzd5?file=%2Fsrc%2FApp.jsx%3A21%2C9-24%2C11
           spaceBetween={50}
           breakpoints={{
             600: { slidesPerView: 1 },
