@@ -16,9 +16,9 @@ function Search({ value, onChange }) {
                 className="button-clear">
                 <BsXLg className="icon-close" type="button" onClick={() => onChange("")} />
             </button>
-            <span>
-                <BsSearch className="icon-search" />
-            </span>
+            <div className="icon-search">
+                {/* <BsSearch className="icon-search" /> */}
+            </div>
 
         </div>
     )
