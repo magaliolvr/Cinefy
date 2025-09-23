@@ -23,12 +23,15 @@ function MoviesList() {
         filteredMovies.map((movie) => {
           return (
             <Link key={movie.id} to={`/moviedetail/${movie.id}`}>
+              {" "}
               <ContentCard
                 poster={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                 title={movie.title}
-                year={movie.release_date?.split("-")[0]} />
+                year={movie.release_date?.split("-")[0]}
+                rating={<StarRating rating={movie.vote_average} />}
+              />{" "}
               {/* ?.split parte o conteudo que recebe em um array, o que separa é o item que esta entre parenteses, e pra usar deste array, basta no parenteses retos colocar a posição que deseja mostrar */}
-              <StarRating rating={movie.vote_everage} />
+
             </Link>
           );
         })

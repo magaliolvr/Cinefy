@@ -14,9 +14,7 @@
   transition: all 0.3s ease-in-out;
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
-  background-color: rgba(255, 255, 255, 0.75);
-  border-radius: 12px;
-  border: 1px solid rgba(209, 213, 219, 0.3);
+  border-bottom: 1px solid rgba(209, 213, 219, 0.3);
 
   ul {
     list-style: none;
@@ -28,9 +26,7 @@
     justify-content: flex-end;
   }
 
-  a {
-    color: black;
-  }
+
 
   nav ul.menu-list a span {
     color: #746f6f;
@@ -79,11 +75,13 @@
       &::before {
         top: 12px;
       }
+
       // Linha central
       span {
         top: 18px;
         transition: 0.4s;
       }
+
       // Linha inferior
       &::after {
         top: 24px;
@@ -95,9 +93,11 @@
         top: 18px;
         transform: rotate(45deg);
       }
+
       span {
         opacity: 0;
       }
+
       &::after {
         top: 18px;
         transform: rotate(-45deg);
