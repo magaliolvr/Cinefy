@@ -1,49 +1,84 @@
 .search-wrap {
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    button:focus,
+    button:focus-visible {
+        outline: none;
+    }
+
     .input-search {
-        background: #ffffff;
+        background: #ffff;
         border-radius: 25px;
         border: solid 1px #c4bfbf;
         color: #000;
         padding: 4px 8px;
+        display: none;
+        transition: all 0.3s linear;
     }
 
-    .button-clear {
-        background: transparent;
-        padding: 8px;
-        color: #8f8c8c;
+    .icon-search {
         position: relative;
-        right: 35px;
-        top: 3px;
+        width: 22px;
+        height: 22px;
+        background: none;
+        border: 3px solid var(--text-color);
+        border-radius: 50%;
+        padding: 0;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
 
-        &:hover {
-            border-color: transparent;
-            border-radius: 0;
-        }
-
-        &:focus-visible,
-        &:focus {
-            border: transparent;
-            outline: transparent;
+        &::after {
+            content: "";
+            position: absolute;
+            width: 12px;
+            height: 3px;
+            background-color: var(--text-color);
+            bottom: -6px;
+            right: -6px;
+            transform: rotate(53deg);
+            transition: all 0.3s ease-in-out;
         }
     }
 
-    // .icon-search {
-    //     content: "";
-    //     width: 23px;
-    //     height: 23px;
-    //     border: solid 2px #e44f4f;
-    //     border-radius: 50%;
+    /*  Quando o campo está ativo */
+    &.show-input {
+        .input-search {
+            display: inline-block;
+            position: relative;
+            left: 30px;
+        }
 
-    //     &:after {
-    //         content: "";
-    //         position: absolute;
-    //         width: 13px;
-    //         height: 3px;
-    //         background-color: red;
-    //         bottom: 20%;
-    //         right: 249px;
-    //         transform: rotate(32deg);
-    //     }
-    // }
+        .icon-search {
+            border: none;
+            border-radius: 0;
+            width: 20px;
+            height: 20px;
+            background: none;
+            top: -1px;
+            position: relative;
 
+            &::before,
+            &::after {
+                content: "";
+                position: absolute;
+                top: 9px;
+                left: 0;
+                width: 20px;
+                height: 3px;
+                background-color: #000;
+                transition: all 0.3s ease-in-out;
+            }
+
+            &::after {
+                transform: rotate(45deg);
+            }
+
+            &::before {
+                transform: rotate(-45deg);
+            }
+        }
+    }
 }

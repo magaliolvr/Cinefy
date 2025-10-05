@@ -6,4 +6,5 @@ export const light = {
 export const dark = {
   body: "#111",
   text: "#fafafa",
+
 };
