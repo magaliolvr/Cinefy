@@ -10,11 +10,13 @@ import { useOutletContext } from "react-router";
 function MoviesList() {
   const { searchValue } = useOutletContext(); // pega o valor do Search
   const { items: movies, isLoading } = useData("movie/popular");
+  const filteredMovies = useFilteredData(movies, searchValue, "title");
 
 
   if (!movies || isLoading) return <p>Carregando filmes...</p>;
+  if (Array.isArray(filteredMovies) && filteredMovies.length === 0) return <p>Nenhum filme encontrado.</p>;
+  // Se o filtro retornou um array vazio, mostramos a mensagem de 'nenhum resultado'
 
-  const filteredMovies = useFilteredData(movies, searchValue, "title");
 
 
   return (

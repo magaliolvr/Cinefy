@@ -3,32 +3,38 @@ import { ThemeProvider as StyledThemeProvider } from "styled-components";
 import GlobalStyle from "../styles.jsx";
 import { light, dark } from "../theme.jsx";
 
-const ThemeContext = createContext(); ///Cria o contexto. O valor padrão é opcional.
+const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
-  // Cria o provedor de tema. Ele gerencia o estado do tema e fornece funções para alternar temas.
   const [themeName, setThemeName] = useState(() => {
-    return localStorage.getItem("theme") || "light"; // quando nao houver um tema definido, usa tema claro como padrao
+    return localStorage.getItem("theme") || "light";
   });
-  const theme = themeName === "light" ? light : dark; // A condição diz que se o nome do tema for "light", use o tema claro; caso contrário, use o tema escuro.
 
+  const theme = themeName === "light" ? light : dark;
 
+  // Atualiza o localStorage sempre que o tema muda
   useEffect(() => {
     localStorage.setItem("theme", themeName);
-  }, [themeName]); //sempre que o tema for alterado, salva na local storage
+  }, [themeName]);
 
+  // Define as variáveis CSS globais (para SCSS ou CSS comum)
+  useEffect(() => {
+    document.body.style.setProperty("--body-color", theme.body);
+    document.body.style.setProperty("--text-color", theme.text);
 
-  // Função para alternar entre temas claro e escuro.
+    // opcional: se quiser mais variáveis
+    // if (theme.primary) document.body.style.setProperty("--primary-color", theme.primary);
+    // if (theme.accent) document.body.style.setProperty("--accent-color", theme.accent);
+  }, [theme]);
 
+  // Função para alternar entre os temas
   const toggleTheme = () => {
-    setThemeName((prev) => (prev === "light" ? "dark" : "light")); // Se o tema atual for "light", mude para "dark"; caso contrário, mude para "light".
+    setThemeName((prev) => (prev === "light" ? "dark" : "light"));
   };
 
   return (
     <ThemeContext.Provider value={{ themeName, setThemeName, toggleTheme }}>
-      {/* Fornece o contexto do tema para os componentes filhos. */}
       <StyledThemeProvider theme={theme}>
-        {/* Fornece o tema atual para styled-components. vai buscar em theme.jsx */}
         <GlobalStyle />
         {children}
       </StyledThemeProvider>
