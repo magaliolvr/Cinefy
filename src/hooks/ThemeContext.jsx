@@ -7,10 +7,10 @@ const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
   const [themeName, setThemeName] = useState(() => {
-    return localStorage.getItem("theme") || "light";
+    return localStorage.getItem("theme") || "dark";
   });
 
-  const theme = themeName === "light" ? light : dark;
+  const theme = themeName === "dark" ? dark : light;
 
   // Atualiza o localStorage sempre que o tema muda
   useEffect(() => {

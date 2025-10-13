@@ -1,5 +1,4 @@
 import MoviesList_Detail from "../components/MovieList_Detail";
-import "./Detail.scss";
 
 function MoviesDetail() {
   return (

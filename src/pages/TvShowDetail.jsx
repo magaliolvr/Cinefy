@@ -1,5 +1,3 @@
-import "./Detail.scss";
-
 import TvShowList_Detail from "../components/TvShowList_Detail";
 
 function TvShow() {

@@ -1,0 +1,33 @@
+.card-slider {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    flex-direction: column;
+
+    ul {
+        display: flex;
+        gap: 32px;
+        width: 100%;
+        scroll-behavior: auto;
+    }
+
+
+    li.round img {
+        border-radius: 50%;
+        width: 90px;
+        height: 90px;
+        object-fit: cover;
+        display: block;
+        justify-self: anchor-center;
+    }
+
+    .square img {
+        width: 150px;
+        height: 225px;
+        object-fit: cover;
+        display: block;
+        justify-self: anchor-center;
+    }
+
+
+}
