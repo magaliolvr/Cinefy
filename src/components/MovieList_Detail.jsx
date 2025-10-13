@@ -1,8 +1,6 @@
 import { SwiperSlide } from "swiper/react";
 import { useData } from "../hooks/useData";
 import { useParams } from "react-router";
-import { Navigation, Pagination, Mousewheel } from "swiper/modules";
-import { Swiper } from "swiper/react";
 import StarRating from "./StarRating";
 
 
@@ -10,15 +8,19 @@ import StarRating from "./StarRating";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { CardSlider } from "./CardSlider";
 
 function MoviesListDetail() {
   const { movieId } = useParams();
 
   const { items: movie, isLoading: loadingMovie } = useData(`movie/${movieId}`);
+  const { items: images, isLoading: loadingImages } = useData(`movie/${movieId}/images`);
   const { items: credits, isLoading: loadingCredits } = useData(`movie/${movieId}/credits`);
 
-  if (loadingMovie || loadingCredits) return <p>Carregando filmes...</p>; //se loadingMovie for true ou loadingCredits for true, retorna a mensagem de carregando filmes.
-  if (!movie || !credits) return <p>Nenhum detalhe encontrado.</p>; //se movie for null ou undefined, ou credits for null ou undefined, retorna a mensagem de nenhum detalhe encontrado.
+  console.log("Movie image:", images);
+
+  if (loadingMovie || loadingImages || loadingCredits) return <p>Carregando filmes...</p>; //se loadingMovie for true ou loadingCredits for true, retorna a mensagem de carregando filmes.
+  if (!movie || !images || !credits) return <p>Nenhum detalhe encontrado.</p>; //se movie for null ou undefined, ou credits for null ou undefined, retorna a mensagem de nenhum detalhe encontrado.
 
   // --- Agrupar crew por pessoa ---
   const groupedCrew = {};
@@ -56,67 +58,31 @@ function MoviesListDetail() {
 
       {/* Cast */}
       <h3>Cast</h3>
-      <div className="detail-list">
-        <ul>
-          <Swiper style={{
-            "--swiper-navigation-color": "#fff",
-            "--swiper-pagination-color": "#fff",
-          }}
-            modules={[Pagination, Navigation, Mousewheel]}
-            grabCursor={true}
-            mousewheel={{ forceToAxis: true }} // faz movimento scroll horizontal
-            spaceBetween={50}
-            slidesPerView="auto"
-            className="mySwiper" >
+      <CardSlider items={credits.cast} imageShape="round">
+        {(elenco) => (
+          <>
+            <img src={`https://image.tmdb.org/t/p/w500${elenco.profile_path}`} alt={elenco.name} />
+            <span>{elenco.name}</span>
+            <span> as </span>
+            <span>{elenco.character}</span>
+          </>
 
-            {credits.cast.map(elenco => {
-              return (
-                <SwiperSlide key={elenco.cast_id} style={{ width: "auto" }}>
-                  <li className="grid">
-                    <img
-                      src={`https://image.tmdb.org/t/p/w500${elenco.profile_path}`}
-                      alt={`${elenco.original_name} as ${elenco.character}`}
-                      width={100}
-                    />
-                    <span>{elenco.original_name}</span>
-                    <span> as </span>
-                    <span>{elenco.character}</span>
-                  </li>
-                </SwiperSlide>
-              )
-            })}
-          </Swiper>
-        </ul>
-      </div>
+        )}
+
+      </CardSlider>
 
       {/* Crew */}
       <h3>Crew</h3>
-      <div className="detail-list">
-        <ul>
-          <Swiper style={{
-            "--swiper-navigation-color": "#fff",
-            "--swiper-pagination-color": "#fff",
-          }}
-            modules={[Pagination, Navigation, Mousewheel]}
-            grabCursor={true}
-            mousewheel={{ forceToAxis: true }} // faz movimento scroll horizontal
-            spaceBetween={50}
-            slidesPerView="auto"
-            className="mySwiper" >
-            {Object.entries(groupedCrew).map(([name, info]) => {
-              return (
-                <SwiperSlide key={name} style={{ width: "auto" }}>
-                  <li className="grid">
-                    <span>{name}</span>
-                    <br />
-                    <span>{info.department}: {info.jobs.join(", ")}</span>
-                  </li>
-                </SwiperSlide>
-              )
-            })}
-          </Swiper>
-        </ul>
-      </div>
+      <CardSlider items={Object.entries(groupedCrew)}  >
+        {([name, info]) => (
+          <>
+            {/* children */}
+            <span>{name}</span>
+            <br />
+            <span>{info.department}: {info.jobs.join(", ")}</span>
+          </>
+        )}
+      </CardSlider>
     </section>
   );
 }

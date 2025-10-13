@@ -1,4 +1,4 @@
-.homePage-section {
+.primary-section {
 
   .swiper {
     width: 100%;
@@ -46,6 +46,59 @@
       top: 0;
       object-fit: cover;
       width: 100%;
+    }
+  }
+}
+
+.content-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  .glass-card {
+    margin: 0 20px 16px 0;
+    width: 150px;
+    height: auto;
+
+    h1 {
+      font-size: 1em;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .primary-section {
+    .swiper {
+      height: 200px;
+
+      .swiper-slide {
+        padding: 20px 30px;
+
+        .title {
+          font-size: 32px;
+        }
+
+        .subtitle {
+          font-size: 18px;
+          margin-bottom: 16px;
+        }
+
+        .text {
+          font-size: 16px;
+          max-width: 300px;
+        }
+      }
+    }
+  }
+
+  .content-section {
+    .glass-card {
+      width: 120px;
+      margin: 0 10px 16px 0;
+
+      h1 {
+        font-size: 0.9em;
+      }
     }
   }
 }

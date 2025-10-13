@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import "../style/utils.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Mousewheel } from "swiper/modules";
-
+import { CardSlider } from "./CardSlider";
 // estilos obrigatórios do Swiper
 import "swiper/css";
 import "swiper/css/navigation";
@@ -52,68 +52,31 @@ function TvShowList_Detail() {
 
         {/* elenco */}
         <h2>Cast</h2>
-        <div className="detail-list">
-          <ul>
-            <Swiper style={{
-              "--swiper-navigation-color": "#fff",
-              "--swiper-pagination-color": "#fff",
-            }}
-              modules={[Pagination, Navigation, Mousewheel]}
-              grabCursor={true}
-              mousewheel={{ forceToAxis: true }} // faz movimento scroll horizontal
-              spaceBetween={50}
-              slidesPerView="auto"
-              className="mySwiper" >
+        <CardSlider items={tvShowCredits.cast} imageShape="round">
+          {(elenco) => (
+            <>
+              <img src={`https://image.tmdb.org/t/p/w500${elenco.profile_path}`} alt={elenco.name} />
+              <span>{elenco.name}</span>
+              <span> as </span>
+              <span>{elenco.character}</span>
+            </>
 
+          )}
 
-              {/* tvShowCredits é um objeto que possui a propriedade 'cast', que é um array de atores. Por isso uso tvShowCrew.cast.map para percorrer o elenco. */}
-              {tvShowCredits.cast.map((elenco) => {
-                return (
-                  <SwiperSlide key={elenco.id} style={{ width: "auto" }}>
-                    <li className="grid">
-                      <img src={`https://image.tmdb.org/t/p/w500${elenco.profile_path}`} alt={`Image of ${elenco.original_name} that represents ${elenco.character}`} width="100" />
-                      <span>{elenco.original_name}</span>
-                      <span> as </span>
-                      <span>{elenco.character}</span>
-                    </li>
-                  </SwiperSlide>
-                )
-              })}
-            </Swiper>
-          </ul>
-        </div>
+        </CardSlider>
 
         {/* equipe */}
         <h2>Crew</h2>
-        <div className="detail-list">
-          <ul>
-            <Swiper style={{
-              "--swiper-navigation-color": "#fff",
-              "--swiper-pagination-color": "#fff",
-            }}
-              modules={[Pagination, Navigation, Mousewheel]}
-              grabCursor={true} //permite agarrar e arrastar 
-              mousewheel={{ forceToAxis: true }} // faz movimento scroll horizontal
-              spaceBetween={50}
-              slidesPerView="auto"
-              className="mySwiper" >
-
-
-              {Object.entries(groupedCrew).map(([name, info]) => {
-                return (
-                  <SwiperSlide key={name} style={{ width: "auto" }}>
-                    <li className="grid">
-                      <span>{name}</span>
-                      <br />
-                      <span>{info.department}:</span>
-                      <span>{info.jobs.join(", ")}</span>
-                    </li>
-                  </SwiperSlide>
-                )
-              })}
-            </Swiper>
-          </ul>
-        </div>
+        <CardSlider items={Object.entries(groupedCrew)}  >
+          {([name, info]) => (
+            <>
+              {/* children */}
+              <span>{name}</span>
+              <br />
+              <span>{info.department}: {info.jobs.join(", ")}</span>
+            </>
+          )}
+        </CardSlider>
       </section>
     </>
   );
