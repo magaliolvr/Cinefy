@@ -4,7 +4,7 @@ export const light = {
 };
 
 export const dark = {
-  body: "#111",
+  body: "#000",
   text: "#fafafa",
 
 };

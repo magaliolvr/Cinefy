@@ -30,11 +30,19 @@ a:hover {
   color: none;
 }
 
+
+html,
 body {
   margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
-  background: #fffef9;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+main {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
 }
 
 // main {

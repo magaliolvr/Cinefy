@@ -1,3 +1,10 @@
+/* --- Regra universal --- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 .main-header {
     display: flex;
     position: relative;

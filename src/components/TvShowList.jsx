@@ -8,11 +8,11 @@ import { useOutletContext } from "react-router";
 function TvShowList() {
   const { searchValue } = useOutletContext(); // pega o valor do Search
   const { items: tvShow, isLoading } = useData("tv/popular");
-
-  if (!tvShow || isLoading) return <p>Carregando filmes...</p>;
-
   const filteredTvshow = useFilteredData(tvShow, searchValue, "name");
 
+
+
+  if (!tvShow || isLoading) return <p>Carregando filmes...</p>;
 
   return (
     <>
