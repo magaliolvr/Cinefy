@@ -1,0 +1,105 @@
+.box-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: start;
+    padding: 0 16px;
+    width: auto;
+}
+
+/* Oculta os radios */
+.radio {
+    display: none;
+}
+
+/* Container das abas */
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 4px;
+    border-bottom: 2px solid #222;
+}
+
+/* Aba individual */
+.tab {
+    cursor: pointer;
+    padding: 10px 25px;
+    margin: 0;
+    color: #ccc;
+    background: transparent;
+    border-radius: 3px 3px 0 0;
+    transition: all 0.3s ease;
+    font-weight: 500;
+
+    &:hover {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.05);
+    }
+}
+
+/* Container do conteúdo das abas */
+.panels {
+    background: #000;
+    min-height: 260px;
+    width: 100%;
+    border-radius: 3px;
+    overflow: hidden;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Cada painel de conteúdo */
+.panel {
+    display: none;
+    animation: fadein 0.5s;
+    color: #fff;
+}
+
+/* Título dentro do painel */
+.tab-title {
+    margin-bottom: 10px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+/* Animação suave */
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* ---- SELETORES DINÂMICOS ---- */
+
+/*
+  Explicação:
+  - Cada input.radio tem id="tab-0", "tab-1", etc.
+  - Cada label.tab está no mesmo nível dentro de .tabs
+  - Cada .panel corresponde à mesma ordem
+  - Assim, usamos nth-child() para combinar o input checked com o painel e label correspondente
+*/
+
+/* Para cada aba dinâmica */
+.radio:nth-of-type(1):checked~.tabs .tab:nth-of-type(1),
+.radio:nth-of-type(2):checked~.tabs .tab:nth-of-type(2),
+.radio:nth-of-type(3):checked~.tabs .tab:nth-of-type(3),
+.radio:nth-of-type(4):checked~.tabs .tab:nth-of-type(4),
+.radio:nth-of-type(5):checked~.tabs .tab:nth-of-type(5) {
+    background: #000;
+    color: #fff;
+    border-bottom: 2px solid #28ccd0;
+}
+
+/* Mostra apenas o painel ativo */
+.radio:nth-of-type(1):checked~.panels .panel:nth-of-type(1),
+.radio:nth-of-type(2):checked~.panels .panel:nth-of-type(2),
+.radio:nth-of-type(3):checked~.panels .panel:nth-of-type(3),
+.radio:nth-of-type(4):checked~.panels .panel:nth-of-type(4),
+.radio:nth-of-type(5):checked~.panels .panel:nth-of-type(5) {
+    display: block;
+}

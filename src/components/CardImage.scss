@@ -1,0 +1,42 @@
+.cardImage {
+    display: grid;
+    width: 150px;
+    gap: 8px;
+    padding: 0 8px;
+    box-sizing: content-box;
+
+    &.round img {
+        height: 100px;
+        overflow: hidden;
+        border-radius: 50%;
+        width: 100px;
+        object-fit: cover;
+        display: block;
+        justify-self: anchor-center;
+    }
+
+    &.square img {
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+        display: block;
+        justify-self: anchor-center;
+    }
+
+    img.placeholder {
+        filter: grayscale(60%);
+        opacity: 0.85;
+        object-fit: cover;
+    }
+
+    &-title {
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    &-subtitle {
+        font-size: 12px;
+        font-weight: 500;
+        color: #ccc;
+    }
+}

@@ -3,31 +3,47 @@
     flex-wrap: wrap;
     width: 100%;
     flex-direction: column;
+    text-align: center;
 
     ul {
         display: flex;
         gap: 32px;
         width: 100%;
         scroll-behavior: auto;
+        padding: 0;
     }
 
 
-    li.round img {
-        border-radius: 50%;
-        width: 90px;
-        height: 90px;
-        object-fit: cover;
-        display: block;
-        justify-self: anchor-center;
-    }
+    // li.round img {
+    //     border-radius: 50%;
+    //     width: 90px;
+    //     height: 90px;
+    //     object-fit: cover;
+    //     display: block;
+    //     justify-self: anchor-center;
+    // }
 
-    .square img {
-        width: 150px;
-        height: 225px;
-        object-fit: cover;
-        display: block;
-        justify-self: anchor-center;
-    }
+    // li.square img {
+    //     width: 150px;
+    //     height: 225px;
+    //     object-fit: cover;
+    //     display: block;
+    //     justify-self: anchor-center;
+    // }
 
+    // img.placeholder {
+    //     filter: grayscale(60%);
+    //     opacity: 0.85;
+    //     object-fit: cover;
+    // }
+
+}
+
+
+// swiper
+
+.swiper {
+    margin-left: 0;
+    margin-right: 0;
 
 }

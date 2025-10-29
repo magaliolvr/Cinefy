@@ -3,14 +3,14 @@ import { Pagination, Mousewheel } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "./CardSlider.scss";
+import CardImage from "./CardImage";
 
 
 export function CardSlider({
     items = [],
-    spaceBetween = 50,
+    spaceBetween = 16,
     slidesPerView = "auto",
-    imageShape = "square", // "square" ou "round"
-    children,
+    children
 }) {
     return (
         <div className="card-slider">
@@ -25,10 +25,8 @@ export function CardSlider({
                 >
                     {items.map((item, index) => (
                         <SwiperSlide key={item.id || index} style={{ width: "auto" }}>
-                            <li className={`grid ${imageShape}`}>
-                                {typeof children === "function"
-                                    ? children(item, imageShape) // 👈 passa o formato pro filho se quiser
-                                    : children}
+                            <li>
+                                {typeof children === "function" ? children(item, index) : children}
                             </li>
                         </SwiperSlide>
                     ))}

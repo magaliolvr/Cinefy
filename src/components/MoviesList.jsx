@@ -18,7 +18,6 @@ function MoviesList() {
   // Se o filtro retornou um array vazio, mostramos a mensagem de 'nenhum resultado'
 
 
-
   return (
     <>
       {Array.isArray(filteredMovies) ? (
