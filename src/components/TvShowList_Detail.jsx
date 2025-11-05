@@ -1,7 +1,6 @@
 import { useData } from "../hooks/useData";
 import { useParams } from "react-router";
 import "../style/utils.scss";
-import StarRating from "./StarRating";
 
 // estilos obrigatórios do Swiper
 import "swiper/css";

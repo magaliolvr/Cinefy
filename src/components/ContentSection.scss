@@ -1,0 +1,34 @@
+.content-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 24px;
+
+    .card-info {
+        margin: 0 20px 16px 0;
+        width: 150px;
+        height: auto;
+
+        h1 {
+            font-size: 1em;
+        }
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    .content-section {
+        padding: 0 16px;
+        width: 100%;
+
+        .card-info {
+            width: 120px;
+            margin: 0 10px 16px 0;
+
+            h1 {
+                font-size: 0.9em;
+            }
+        }
+    }
+}

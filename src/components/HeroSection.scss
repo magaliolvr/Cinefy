@@ -17,13 +17,16 @@
                 overflow: hidden;
                 width: 100%;
                 height: 50vh;
+                max-height: 70vh;
+                min-height: 30vh;
 
                 img {
                     display: block;
                     width: 100%;
-                    height: 50vh;
+                    height: 100%;
                     object-fit: cover;
                     filter: brightness(0.8);
+                    object-position: top;
                 }
 
                 &::after {
@@ -38,7 +41,8 @@
                     pointer-events: none;
                     /* não bloquear cliques na imagem */
                     z-index: 2;
-                    background: linear-gradient(to top, rgb(0, 0, 0) 3%, rgba(0, 0, 0, 0.35) 40%, rgba(0, 0, 0, 0) 100%)
+                    background: var(--imageGradient);
+                    /* gradiente para melhorar legibilidade do texto */
                 }
             }
 
@@ -49,6 +53,7 @@
                 padding: 24px;
 
                 .title {
+                    color: #fff;
                     text-align: start;
                     margin: 0;
                 }
@@ -58,14 +63,48 @@
                     color: #ccc;
                     text-align: start;
                     margin: auto;
+                    white-space: break-spaces;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    line-clamp: 2;
+                    overflow: hidden;
+                    -webkit-box-orient: vertical;
                 }
 
                 .actions {
                     margin: 16px 0;
                     justify-content: start;
                     text-align: start;
+
+                    button {
+                        border-radius: 16px;
+                        background: var(--swiper-theme-color);
+                        font-weight: 700;
+                    }
+
                 }
             }
 
+
+        }
+
+        @media only screen and (max-width: 600px) {
+            .heroSection {
+
+                .content-wrapper {
+                    grid-row: 2 / 3;
+                    grid-column: 1 / 3;
+                    z-index: 999;
+                    padding: 16px;
+
+                    .title {
+                        font-size: 2.2em;
+                    }
+
+                    .description {
+                        font-size: 12px;
+                    }
+                }
+            }
 
         }

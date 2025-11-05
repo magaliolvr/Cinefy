@@ -7,14 +7,16 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { useOutletContext } from "react-router";
 import { useFilteredData } from "../hooks/useFilteredData";
-import ContentCard from "./ContentCard";
-import StarRating from "./StarRating";
+import CardContent from "./CardContent";
 import { ContentSection } from "./ContentSection";
 import { CardSlider } from "./CardSlider";
 import HeroSection from "./HeroSection";
+import { useParams } from "react-router";
+import StarRatingSingle from "./StarRatingSingle";
 
 export function HomeList() {
     const { searchValue } = useOutletContext();
+    const { movieId } = useParams();
 
     // Movies
     const { items: inExibition, isLoading } = useData("movie/upcoming");
@@ -34,10 +36,6 @@ export function HomeList() {
         "title", { waitAll: true, treatEmptyAsLoaded: true }
 
     );
-
-
-
-
 
 
     if (isLoading) return <p>Carregando...</p>;
@@ -83,9 +81,8 @@ export function HomeList() {
                                     url={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
                                     alt={movie.title}
                                     title={movie.title}
+                                    rating={<StarRatingSingle rating={movie.vote_average} />}
                                     description={movie.overview}
-                                    year={movie.release_date?.split("-")[0]}
-                                    rating={<StarRating rating={movie.vote_average} />}
                                 >
                                     <button>Play</button>
                                 </HeroSection>
@@ -103,11 +100,11 @@ export function HomeList() {
                     <CardSlider items={filteredGlobal}>
                         {(item) => (
                             <Link key={item.id} to={`/${item.title ? "moviedetail" : "tvdetail"}/${item.id}`}>
-                                <ContentCard
+                                <CardContent
                                     poster={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
                                     title={item.title || item.name}
+                                    rating={<StarRatingSingle rating={item.vote_average} />}
                                     year={(item.release_date || item.first_air_date)?.split("-")[0]}
-                                    rating={<StarRating rating={item.vote_average} />}
                                 />
                             </Link>
                         )}
@@ -125,20 +122,6 @@ export function HomeList() {
                 </section>
             )}
 
-
-
-
-
-            {/* SEÇÕES DE CONTEÚDO */}
-            {/* <section className="content-section">
-                <ContentSection title="Popular Movies" items={popularMovie} type="movie" />
-                <ContentSection title="Top Rated Movies" items={topRatedMovie} type="movie" />
-                <ContentSection title="Now Playing" items={playingMovie} type="movie" />
-
-                <ContentSection title="Popular TV Shows" items={popularTv} type="tvShow" />
-                <ContentSection title="Top Rated TV Shows" items={topRatedTv} type="tvShow" />
-                <ContentSection title="Currently Airing" items={playingTv} type="tvShow" />
-            </section> */}
         </>
     );
 }

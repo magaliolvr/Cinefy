@@ -1,7 +1,5 @@
 import { useData } from "../hooks/useData";
 import { useParams } from "react-router";
-import StarRating from "./StarRating";
-import TabContent from "./TabNavigation";
 import "./HeroSection.scss";
 import DummyImage from "../assets/dummy_Img.png";
 import CardImage from "./CardImage";
@@ -98,7 +96,7 @@ function MoviesListDetail() {
           movie.title +
           (movie.release_date ? ` (${movie.release_date.split("-")[0]})` : "")
         }
-        description={movie.genres.map((g) => g.name).join(", ")}
+        description={movie.genres.map((g) => g.name).join(", ") + ` • ${movie.runtime} min`}
       >
         <button>Play</button>
       </HeroSection>
