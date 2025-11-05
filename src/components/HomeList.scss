@@ -39,8 +39,6 @@
         text-align: start;
         display: block;
       }
-
-
     }
 
     .parallax-bg {
@@ -53,21 +51,7 @@
   }
 }
 
-.content-section {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
 
-  .glass-card {
-    margin: 0 20px 16px 0;
-    width: 150px;
-    height: auto;
-
-    h1 {
-      font-size: 1em;
-    }
-  }
-}
 
 @media only screen and (max-width: 600px) {
   .primary-section {
@@ -90,17 +74,6 @@
           font-size: 16px;
           max-width: 300px;
         }
-      }
-    }
-  }
-
-  .content-section {
-    .glass-card {
-      width: 120px;
-      margin: 0 10px 16px 0;
-
-      h1 {
-        font-size: 0.9em;
       }
     }
   }

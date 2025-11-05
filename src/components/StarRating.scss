@@ -1,0 +1,25 @@
+.star-rating {
+    display: flex;
+    align-items: center;
+    color: gold;
+
+    svg {
+        margin-right: 2px;
+    }
+
+    &.star-rating-single {
+        gap: 6px;
+
+        .single-star {
+            color: gold;
+            width: 1em;
+            height: 1em;
+        }
+
+        .rating-number {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--textSecondary-color);
+        }
+    }
+}

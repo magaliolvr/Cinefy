@@ -1,7 +1,7 @@
 import "./HeroSection.scss";
-import GlassCard from "./GlassCard";
 
 function HeroSection({ url, alt, title, description, children }) {
+
     return <>
         <section className="heroSection">
             <div className="image-wrapper">

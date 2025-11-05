@@ -18,7 +18,7 @@
     flex-wrap: wrap;
     width: 100%;
     gap: 4px;
-    border-bottom: 2px solid #222;
+    border-bottom: 2px solid var(--textSecondary-color);
 }
 
 /* Aba individual */
@@ -26,21 +26,21 @@
     cursor: pointer;
     padding: 10px 25px;
     margin: 0;
-    color: #ccc;
+    color: var(--text-color);
     background: transparent;
     border-radius: 3px 3px 0 0;
     transition: all 0.3s ease;
     font-weight: 500;
 
     &:hover {
-        color: #fff;
-        background: rgba(255, 255, 255, 0.05);
+        color: var(--hoverCard-color);
+        background: var(--body-color);
     }
 }
 
 /* Container do conteúdo das abas */
 .panels {
-    background: #000;
+    background: var(--body-color);
     min-height: 260px;
     width: 100%;
     border-radius: 3px;
@@ -53,7 +53,7 @@
 .panel {
     display: none;
     animation: fadein 0.5s;
-    color: #fff;
+    color: var(--text-color);
 }
 
 /* Título dentro do painel */
@@ -90,9 +90,10 @@
 .radio:nth-of-type(3):checked~.tabs .tab:nth-of-type(3),
 .radio:nth-of-type(4):checked~.tabs .tab:nth-of-type(4),
 .radio:nth-of-type(5):checked~.tabs .tab:nth-of-type(5) {
-    background: #000;
-    color: #fff;
-    border-bottom: 2px solid #28ccd0;
+    background: var(--body-color);
+    color: var(--text-color);
+    border-bottom: 2px solid var(--hoverCard-color);
+    font-weight: 700;
 }
 
 /* Mostra apenas o painel ativo */

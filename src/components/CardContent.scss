@@ -1,0 +1,72 @@
+.card-content {
+  background-color: var(--cardBackground-color); // fundo escuro padrão
+  border-radius: 16px;
+  overflow: hidden;
+  height: 300px;
+  width: 160px;
+  color: var(--text-color);
+  font-family: 'Inter', 'Roboto', sans-serif;
+
+  box-shadow: 0 8px 14px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    border: solid 2px var(--hoverCard-color);
+    box-shadow: 6px 6px 18px rgba(0, 0, 0, 0.7);
+
+    .image-wrapper img {
+      filter: brightness(1.1);
+    }
+  }
+
+  .image-wrapper {
+    width: 100%;
+    height: 70%;
+    overflow: hidden;
+    position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: filter 0.3s ease;
+    }
+  }
+
+  .title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 16px 12px 8px 12px;
+    color: var(--textSecondary-color);
+    line-height: 1.3;
+    text-align: start;
+
+    /* --- truncamento em 1 linha --- */
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    /* --- comportamento visual suave --- */
+    cursor: default;
+  }
+
+
+  .additional-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 16px 16px;
+    font-size: 0.9rem;
+    color: var(--textSecondary-color);
+
+    div {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+  }
+}

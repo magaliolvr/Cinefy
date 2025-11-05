@@ -21,6 +21,10 @@ export function ThemeProvider({ children }) {
   useEffect(() => {
     document.body.style.setProperty("--body-color", theme.body);
     document.body.style.setProperty("--text-color", theme.text);
+    document.body.style.setProperty("--textSecondary-color", theme.textSecondary);
+    document.body.style.setProperty("--cardBackground-color", theme.cardBackground);
+    document.body.style.setProperty("--hoverCard-color", theme.hoverCard);
+    document.body.style.setProperty("--imageGradient", theme.imageGradient);
 
     // opcional: se quiser mais variáveis
     // if (theme.primary) document.body.style.setProperty("--primary-color", theme.primary);
@@ -45,3 +49,4 @@ export function ThemeProvider({ children }) {
 export function useTheme() {
   return useContext(ThemeContext);
 }
+
