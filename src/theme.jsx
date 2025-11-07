@@ -3,8 +3,8 @@ export const light = {
   text: " #000",
   textSecondary: "#E2DEDD",
   btnColor: "#00afff",
-  cardBackground: "#586c58",
-  hoverCard: "#b6d7b2",
+  cardBackground: "#00afff",
+  hoverCard: "#99ccec",
   imageGradient: "linear-gradient(to top, rgb(218 218 218) 3%, rgb(7 0 0 / 0%) 54%, rgba(0, 0, 0, 0) 100%)",
 };
 
