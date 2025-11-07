@@ -1,7 +1,7 @@
 import { CardSlider } from "./CardSlider";
 import CardContent from "./CardContent";
 import StarRatingSingle from "./StarRatingSingle";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 
 // ContentSection é um componente genérico para renderizar seções de conteúdo (filmes ou séries)

@@ -4,7 +4,7 @@ import "./style/index.scss";
 import "./style/reset.scss";
 import "./style/utils.scss";
 import { ThemeProvider } from "./hooks/ThemeContext.jsx";
-import { BrowserRouter, Routes, Route } from "react-router";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DefaultLayout from "./layouts/DefaultLayout.jsx";
 import Home from "./pages/Home.jsx";
 import Movies from "./pages/Movies.jsx";
