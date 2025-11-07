@@ -25,6 +25,7 @@ export function ThemeProvider({ children }) {
     document.body.style.setProperty("--cardBackground-color", theme.cardBackground);
     document.body.style.setProperty("--hoverCard-color", theme.hoverCard);
     document.body.style.setProperty("--imageGradient", theme.imageGradient);
+    document.body.style.setProperty("--btn-color", theme.btnColor);
 
     // opcional: se quiser mais variáveis
     // if (theme.primary) document.body.style.setProperty("--primary-color", theme.primary);

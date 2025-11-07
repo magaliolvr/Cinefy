@@ -1,8 +1,8 @@
 import { useData } from "../hooks/useData";
 import CardContent from "./CardContent";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { useFilteredData } from "../hooks/useFilteredData";
-import { useOutletContext } from "react-router";
+import { useOutletContext } from "react-router-dom";
 import StarRatingSingle from "./StarRatingSingle";
 import { CardSlider } from "./CardSlider";
 import { ContentSection } from "./ContentSection";

@@ -1,5 +1,5 @@
 import { useData } from "../hooks/useData";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import "./HeroSection.scss";
 import DummyImage from "../assets/dummy_Img.png";
 import CardImage from "./CardImage";

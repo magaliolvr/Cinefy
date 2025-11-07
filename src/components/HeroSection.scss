@@ -59,7 +59,7 @@
 
                 .description {
                     font-size: 14px;
-                    color: #ccc;
+                    color: var(--textSecondary-color);
                     text-align: start;
                     margin: auto;
                     white-space: break-spaces;
@@ -77,7 +77,7 @@
 
                     button {
                         border-radius: 16px;
-                        background: var(--swiper-theme-color);
+                        background: var(--btn-color);
                         font-weight: 700;
                     }
 

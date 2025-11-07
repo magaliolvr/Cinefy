@@ -15,13 +15,19 @@
   -webkit-backdrop-filter: blur(16px) saturate(180%);
   border-bottom: 1px solid rgba(209, 213, 219, 0.3);
 
+  .logo {
+    height: auto;
+    width: 2rem;
+  }
+
   .header-actions {
     display: flex;
     gap: 16px;
     align-items: center;
   }
 
-  ul {
+  /* ======== MENU PRINCIPAL ======== */
+  ul.menu-list {
     list-style: none;
     display: flex;
     gap: 40px;
@@ -29,25 +35,45 @@
     margin: 0;
     align-items: center;
     justify-content: flex-end;
+
+    li.menu-item {
+      a {
+        color: var(--text-color);
+        font-weight: 600;
+        font-size: 16px;
+        text-decoration: none;
+        transition: color 0.3s ease, border-bottom 0.3s ease;
+        display: block;
+        padding: 8px 4px;
+        border-bottom: 2px solid transparent;
+      }
+
+      a:hover {
+        color: var(--btn-color);
+      }
+
+      /* ✅ Corrigido: o React Router aplica .active no <a> */
+      a.active {
+        color: var(--btn-color);
+        font-weight: 900;
+        border-bottom: 2px solid var(--btn-color);
+      }
+    }
   }
 
-
-
+  /* ======== SPAN (caso uses texto dentro de <span>) ======== */
   nav ul.menu-list a span {
-    color: var(--text-color);
-    font-weight: 600;
-    font-size: 16px;
     display: flex;
   }
 }
 
+/* ======== RESPONSIVO ======== */
 @media only screen and (max-width: 600px) {
   .nav-header {
     justify-content: space-between;
     display: flex;
     gap: 16px;
     padding: 16px;
-
 
     .header-actions {
       display: flex;
@@ -69,25 +95,11 @@
         background-color: var(--text-color);
         display: block;
         border-radius: 5px;
-        transition: -4.7s ease;
+        transition: 0.3s ease;
         position: relative;
         top: 15px;
 
-        //cria a linha central
-
-        &::before {
-          content: "";
-          height: 4px;
-          width: 30px;
-          display: block;
-          border-radius: 5px;
-          background-color: var(--text-color);
-          ;
-          transform: translateY(-8px);
-        }
-
-        //cria a primeira linha 
-
+        &::before,
         &::after {
           content: "";
           height: 4px;
@@ -95,59 +107,69 @@
           display: block;
           border-radius: 5px;
           background-color: var(--text-color);
-          transform: translateY(4px);
+          position: absolute;
+          left: 0;
         }
 
-        //cria a ultima linha
-
-
-      }
-
-      &.is-open {
-        display: block;
-
-        span {
-          transform: translateY(4px) rotateZ(-45deg);
-
-
-          &::before {
-            display: none;
-          }
-
-          // .is-open #bar2 {
-          //   opacity: 0;
-          // }
-
-          &::after {
-            transform: translateY(0px) rotateZ(-91deg);
-          }
+        &::before {
+          transform: translateY(-8px);
         }
 
+        &::after {
+          transform: translateY(8px);
+        }
       }
 
+      &.is-open span {
+        transform: rotate(-45deg);
+      }
+
+      &.is-open span::before {
+        opacity: 0;
+      }
+
+      &.is-open span::after {
+        transform: rotate(90deg);
+      }
     }
-
-
-
   }
 
   .nav-popup {
     justify-self: end;
     position: fixed;
     width: 50%;
-    transition: -4.7s ease;
+    transition: 0.3s ease;
     background-color: var(--body-color);
-    box-shadow: 0 15px 9px 0 rgba(0, 0, 0, 0.2), 0 3px 15px 0 rgba(0, 0, 0, 0);
-    ;
+    box-shadow: 0 15px 9px 0 rgba(0, 0, 0, 0.2),
+      0 3px 15px 0 rgba(0, 0, 0, 0);
+    z-index: 999;
 
-    ul {
+    ul.menu-list {
       padding: 16px;
       margin: 0;
+      flex-direction: column;
 
-      li {
+      li.menu-item {
         margin: 8px 0;
+
+        a {
+          color: var(--text-color);
+          font-weight: 600;
+          text-decoration: none;
+          transition: color 0.3s ease;
+        }
+
+        a:hover {
+          color: var(--btnColor);
+        }
+
+        /* ✅ Corrigido aqui também */
+        a.active {
+          color: var(--btnColor);
+          font-weight: 900;
+          border-bottom: none;
+        }
       }
     }
   }
-
 }

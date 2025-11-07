@@ -1,17 +1,17 @@
 import { Parallax, Autoplay, Pagination, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useData } from "../hooks/useData";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import "./HomeList.scss";
 import "swiper/css";
 import "swiper/css/pagination";
-import { useOutletContext } from "react-router";
+import { useOutletContext } from "react-router-dom";
 import { useFilteredData } from "../hooks/useFilteredData";
 import CardContent from "./CardContent";
 import { ContentSection } from "./ContentSection";
 import { CardSlider } from "./CardSlider";
 import HeroSection from "./HeroSection";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import StarRatingSingle from "./StarRatingSingle";
 
 export function HomeList() {
